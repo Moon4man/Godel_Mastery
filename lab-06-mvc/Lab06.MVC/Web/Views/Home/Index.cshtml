@@ -1,0 +1,13 @@
+﻿@model IEnumerable<BookDTO>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+<img src="/img/3.jpg" class="img-fluid" width="100%" alt="Image not found">
+<p><h1 class="center">Bestseller</h1></p>
+<div class="row mt-5 mb-2">
+    @foreach(var books in Model)
+    {
+         @Html.Partial("_AllBooks", books)
+    }
+</div>

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Lab06.MVC.styles.css" asp-append-version="true" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+   <header>
+  <nav class="navbar navbar-expand-md">
+    <div class="container-fluid">
+        <img src="/img/Emblem.jpg" class="bi me-2" width="40" height="40" />
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li>
+              <a href="/" class="nav-link px-2 text-black">Home</a>
+          </li>
+          <li>
+              <a asp-action="GetBooks" asp-controller="Home" class="nav-link px-2 text-black">All Books</a>
+          </li>
+<form class="get">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-black" href="#" id="dropdown04" data-bs-toggle="dropdown" aria-expanded="false">Books</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown04">
+              <li><a class="dropdown-item text-black disabled h5" href="#">Artistic literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=1">Foreign modern literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=2">Foreign classical literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=3">Russian modern literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=4">Russian classical literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=5">Fantasy</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=6">Detective</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=7">Belarusian literature</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-black disabled h5" href="#">Non-fiction literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=8">Popular-science literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=9">IT literature</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=10">Self-development</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=11">Business literature</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item text-black disabled h5" href="#">Comics</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=12">Manga</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=13">Marvel Comics</a></li>
+              <li><a class="dropdown-item text-black" href="/Home/GetBooks?category=14">DC Comics</a></li>
+            </ul>
+          </li>
+</form>
+          <li>
+              <a href="#" class="nav-link px-2 text-black">About</a>
+          </li>
+          @if(User.Identity?.IsAuthenticated == true && User.HasClaim(ClaimTypes.Role, "admin"))
+          {
+          <li>
+              <a href="/Admin/Index" class="nav-link px-2 text-danger">Admin Tools</a>
+          </li>
+          <li>
+              <a href="/Order/Index" class="nav-link px-2 text-danger">Orders</a>
+          </li>
+          }
+        </ul>
+        <form asp-controller="Home" asp-action="Search" method="get" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="text" name="result" class="form-control form-control-dark" placeholder="Search..." aria-label="Search">
+        </form>
+        <div class="text-end col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+            <a class="btn btn-outline-dark" href="/ShopCart/Index">
+                Cart
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                @await Component.InvokeAsync("ShoppingCartSummary")
+            </a>
+        </div>
+        <partial name="_LoginPartial" />
+      </div>
+    </div>
+  </nav>
+</header>
+  <div class="container mt-5">
+    @RenderBody()
+  </div>
+<footer class="border-top footer text-muted" style="margin-top: 15px">
+    <div class="container">
+        <p class="float-end"><a href="#">Back to top</a></p>
+        © 2022 Все права защищены
+    </div>
+</footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
+

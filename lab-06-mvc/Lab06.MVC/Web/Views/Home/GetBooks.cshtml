@@ -1,0 +1,35 @@
+﻿@model BooksListViewModel
+
+@{
+    ViewBag.Title = "Books";
+}
+
+<h1>Books</h1>
+
+<div class="row mt-5 mb-2">
+    @foreach(var books in Model.Books)
+    {
+        @Html.Partial("_AllBooks", books)
+    }
+</div>
+
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="GetBooks"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       asp-route-company="@(Model.FilterViewModel.SelectedCategory)"
+       class="btn  btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Previous
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="GetBooks"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       asp-route-company="@(Model.FilterViewModel.SelectedCategory)"
+       class="btn btn-outline-dark">
+        Next
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}

@@ -1,0 +1,63 @@
+﻿@model BookViewModel
+
+@{
+    ViewBag.Title = "Adding a book";
+}
+
+<div class="text-center">
+           <img class="mb-4" src="/img/Emblem.jpg" alt="" width="72" height="72">
+           <h1 class="h3 mb-3 fw-normal">Adding a book</h1>
+</div>
+
+<form asp-action="Add" asp-controller="Book" class="d-grid gap-2 col-6 mx-auto text-center">
+    <div class="form-group">
+        <label asp-for="Book.Name" class="control-label">Name</label>
+        <input asp-for="Book.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.Author" class="control-label">Author</label>
+        <input asp-for="Book.Author" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.PublishingHouse" class="control-label">Publishing House</label>
+        <input asp-for="Book.PublishingHouse" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.YearOfPublication" class="control-label">Year Of Publication</label>
+        <input asp-for="Book.YearOfPublication" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.NumberOfPage" class="control-label">Number Of Page</label>
+        <input asp-for="Book.NumberOfPage" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.Description" class="control-label">Description</label>
+        <textarea asp-for="Book.Description" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.ImageLink" class="control-label">Image</label>
+        <input asp-for="Book.ImageLink" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.Price" class="control-label">Price</label>
+        <input asp-for="Book.Price" class="form-control" />
+    <div class="form-group">
+        <label asp-for="Book.IsFavorite" class="control-label">Bestseller?</label>
+        <select asp-for="Book.IsFavorite" class="form-control">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label asp-for="Book.CategoryId" class="control-label">Category of book</label>
+        <select asp-for="Book.CategoryId" class="form-control">
+            @foreach(var category in Model.Categories)
+            {
+                @Html.Partial("_AllCategories", category)
+            }
+        </select>
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <input type="submit"  class="btn btn-primary" value="Add" />
+    </div>
+</form>

@@ -1,0 +1,43 @@
+﻿@model IEnumerable<BookDTO>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<p><a asp-action="Add">Add book</a></p>
+
+<form asp-controller="Book" asp-action="Search" method="get" class="flex">
+        <input type="text" name="result" class="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
+        <input type="submit" value="Search" class="btn btn-primary"/>
+</form>
+
+<body>
+    <p>
+        <h3>Books</h3>
+    </p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Author</th>
+      <th scope="col">Category</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+      @foreach (var book in Model)
+            {
+            <tr>
+                <th scope="row">@book.Id</th>
+                <td>@book.Name</td>
+                <td>@book.Author</td>
+                <td>@book.Category.Name</td>
+                <td><a asp-action="Edit" asp-controller="Book" asp-route-id="@book.Id">Edit</a></td>
+                <td><a asp-action="Delete" asp-controller="Book" asp-route-id="@book.Id">Delete</a></td>
+            </tr>
+            }
+  </tbody>
+</table>
+</body>

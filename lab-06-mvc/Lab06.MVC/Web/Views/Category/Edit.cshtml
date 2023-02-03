@@ -1,0 +1,26 @@
+﻿@model CategoryDTO
+
+@{
+    ViewBag.Title = "Editing the category";
+}
+
+<div class="text-center">
+           <img class="mb-4" src="/img/Emblem.jpg" alt="" width="72" height="72">
+           <h1 class="h3 mb-3 fw-normal">Editing the category</h1>
+</div>
+
+<form asp-action="Edit" asp-controller="Category" class="d-grid gap-2 col-6 mx-auto text-center">
+    <fieldset disabled>
+    <div class="form-group">
+        <label asp-for="Id" class="control-label">Id</label>
+        <input asp-for="Id" class="form-control" />
+    </div>
+    </fieldset>
+    <div class="form-group">
+        <label asp-for="Name" class="control-label">Name</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <input type="submit"  class="btn btn-primary" value="Save" />
+    </div>
+</form>

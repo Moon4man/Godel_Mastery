@@ -1,0 +1,21 @@
+﻿@model BookDTO
+@{
+    ViewBag.Title = "Deleting the book";
+}
+ 
+<div>
+    <div class="col-lg-4">
+            <img class="img-thumbnail" src="@Model.ImageLink" alt="@Model.Name" width="240" height="140" />
+            <h4>@Model.Name</h4>
+            <p class="lead">@Model.Author</p>
+    </div>
+    <h5>Do you really want to delete this book?</h5>
+    <div class="flex">
+        <form asp-controller="Book" asp-action="Delete" method="post">
+            <div class="form-group">
+                <input type="submit" class="btn btn-danger" value="Yes, delete" />
+            </div>
+        </form>
+        <a class="btn btn-secondary" asp-action="Index" asp-controller="Book">No</a>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model BookViewModel
+
+@{
+    ViewBag.Title = "Adding a category";
+}
+
+<div class="text-center">
+           <img class="mb-4" src="/img/Emblem.jpg" alt="" width="72" height="72">
+           <h1 class="h3 mb-3 fw-normal">Adding a category</h1>
+</div>
+
+<form asp-action="Add" asp-controller="Category" class="d-grid gap-2 col-6 mx-auto text-center">
+    <div class="form-group">
+        <label asp-for="Category.Name" class="control-label">Name</label>
+        <input asp-for="Category.Name" class="form-control" />
+    </div>
+    <div class="form-group" style="margin-top: 10px">
+        <input type="submit"  class="btn btn-primary" value="Add" />
+    </div>
+</form>

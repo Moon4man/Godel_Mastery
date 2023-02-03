@@ -1,0 +1,20 @@
+﻿@model CategoryDTO
+@{
+    ViewBag.Title = "Deleting the category";
+}
+ 
+<div>
+    <div class="col-lg-4">
+        <h3>ID: </h3> <h4>@Model.Id</h4>
+        <h3>Name: </h3> <h4>@Model.Name</h4>
+    </div>
+    <h5>Do you really want to delete this category?</h5>
+    <div class="flex">
+        <form asp-controller="Category" asp-action="Delete" method="post">
+            <div class="form-group">
+                <input type="submit" class="btn btn-danger" value="Yes, delete" />
+            </div>
+        </form>
+        <a class="btn btn-secondary" asp-action="Index" asp-controller="Category">No</a>
+    </div>
+</div>
